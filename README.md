@@ -7,7 +7,7 @@ Designed with a clean UI, smooth animations, and a futuristic black + neon green
 
 ## 🌐 Live Demo
 
-👉 https://muhammadmoiz-portfolio.netlify.app/
+👉https://muhammadmoiz-portfolio.netlify.app/
 
 ---
 
