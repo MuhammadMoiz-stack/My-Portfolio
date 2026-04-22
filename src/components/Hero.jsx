@@ -1,6 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Download } from "lucide-react";
-import heroImg from "/src/assets/my resume image.jpeg";
+import heroImg from "../assets/my resume image.jpeg";
 
 const Hero = () => {
   return (
@@ -34,8 +35,8 @@ const Hero = () => {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-8">
               {/* Download CV Button */}
               <a
-                href="/public/MuhammadMoiz-WebDeveloper.pdf"
-                className="group relative flex items-center gap-2 px-8 py-3 rounded-full bg-black border border-[#00ff99] text-white font-medium transition-all duration-300 hover:bg-[#00ff99] hover:text-black hover:shadow-[0_0_25px_rgba(0,255,153,0.6)] active:scale-95"
+                href="/MuhammadMoiz-WebDeveloper.pdf"
+                className="group relative flex items-center gap-2 px-8 py-3 rounded-full bg-black border border-[#00ff99] text-white font-medium transition-all duration-150 hover:bg-[#00ff99] hover:text-black hover:shadow-[0_0_25px_rgba(0,255,153,0.6)] active:scale-95 active:bg-[#00ff99] active:text-black touch-manipulation"
               >
                 <Download size={18} className="group-hover:animate-bounce" />
                 <span>Download CV</span>
@@ -43,11 +44,13 @@ const Hero = () => {
 
               {/* Social Icons */}
               <div className="flex gap-4">
-                <a
+                <motion.a
+                  whileTap={{ scale: 0.9 }}
                   href="https://github.com/MuhammadMoiz-stack/"
-                  className="w-12 h-12 flex items-center justify-center rounded-full bg-black border border-gray-700 text-gray-400 transition-all duration-300 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110"
+                  className="w-12 h-12 flex items-center justify-center rounded-full bg-black border border-gray-700 text-gray-400 transition-all duration-150 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110 active:border-[#00ff99] active:text-[#00ff99] touch-manipulation"
                   aria-label="GitHub"
                 >
+
                   <svg
                     width="20"
                     height="20"
@@ -61,10 +64,11 @@ const Hero = () => {
                     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.28 1.15-.28 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
                     <path d="M9 18c-4.51 2-5-2-7-2" />
                   </svg>
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileTap={{ scale: 0.9 }}
                   href="https://www.linkedin.com/in/muhammad-moiz-6744682b8/"
-                  className="w-12 h-12 flex items-center justify-center rounded-full bg-black border border-gray-700 text-gray-400 transition-all duration-300 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110"
+                  className="w-12 h-12 flex items-center justify-center rounded-full bg-black border border-gray-700 text-gray-400 transition-all duration-300 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110 active:border-[#00ff99] active:text-[#00ff99]"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -81,18 +85,21 @@ const Hero = () => {
                     <rect width="4" height="12" x="2" y="9" />
                     <circle cx="4" cy="4" r="2" />
                   </svg>
-                </a>
+                </motion.a>
               </div>
             </div>
           </div>
 
           {/* RIGHT SIDE: IMAGE */}
-          <div className="relative group lg:justify-self-end">
-            <div className="relative w-full max-w-100 md:max-w-112.5 aspect-4/5 overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+          <motion.div 
+            whileTap={{ scale: 0.98 }}
+            className="relative group lg:justify-self-end cursor-pointer"
+          >
+            <div className="relative w-full max-w-100 md:max-w-112.5 aspect-4/5 overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] group-active:scale-[1.02]">
               <img
                 src={heroImg}
                 alt="Moiz Portfolio Portrait"
-                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+                className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110 group-active:grayscale-0 group-active:scale-110"
               />
 
               {/* Gradient Overlay for Fade Effect */}
@@ -104,9 +111,9 @@ const Hero = () => {
             </div>
 
             {/* Decorative Elements around image */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-[#00ff99]/30 rounded-tr-3xl pointer-events-none group-hover:border-[#00ff99]/60 transition-colors duration-500"></div>
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-[#00ff99]/30 rounded-bl-3xl pointer-events-none group-hover:border-[#00ff99]/60 transition-colors duration-500"></div>
-          </div>
+            <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-[#00ff99]/30 rounded-tr-3xl pointer-events-none group-hover:border-[#00ff99]/60 group-active:border-[#00ff99]/60 transition-colors duration-500"></div>
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-[#00ff99]/30 rounded-bl-3xl pointer-events-none group-hover:border-[#00ff99]/60 group-active:border-[#00ff99]/60 transition-colors duration-500"></div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -114,3 +121,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

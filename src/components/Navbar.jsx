@@ -50,25 +50,25 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="relative text-gray-300 text-xl font-medium transition-colors duration-300 hover:text-[#00ff99] group"
+              className="relative text-gray-300 text-xl font-medium transition-colors duration-300 hover:text-[#00ff99] active:text-[#00ff99] group"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00ff99] transition-all duration-300 group-hover:w-full shadow-[0_0_8px_#00ff99]"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00ff99] transition-all duration-300 group-hover:w-full group-active:w-full shadow-[0_0_8px_#00ff99]"></span>
             </a>
           ))}
         </div>
 
         {/* MOBILE MENU BUTTON */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center px-6">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white focus:outline-none transition-transform duration-300 hover:scale-110"
+            className="text-white focus:outline-none transition-transform duration-300 hover:scale-110 active:scale-90"
             aria-label="Toggle menu"
           >
             {isOpen ? (
               <X size={28} className="text-[#00ff99]" />
             ) : (
-              <Menu size={28} className="hover:text-[#00ff99]" />
+              <Menu size={28} className="hover:text-[#00ff99] active:text-[#00ff99]" />
             )}
           </button>
         </div>
@@ -86,13 +86,14 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-gray-300 text-lg font-medium hover:text-[#00ff99] transition-colors duration-300"
+              className="text-gray-300 text-lg font-medium hover:text-[#00ff99] active:text-[#00ff99] transition-colors duration-300"
             >
               {link.name}
             </a>
           ))}
         </div>
       </div>
+
     </nav>
   );
 };

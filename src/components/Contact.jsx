@@ -42,7 +42,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white text-3xl md:text-5xl font-bold tracking-tight uppercase"
+            className="text-white text-3xl md:text-5xl font-extrabold tracking-tight uppercase"
           >
             Contact Me
           </motion.h2>
@@ -73,54 +73,66 @@ const Contact = () => {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#0a0a0a] border border-gray-800 group-hover:border-[#00ff99] transition-all duration-300">
+              <motion.div 
+                whileTap={{ scale: 0.98 }}
+                className="flex items-start gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#0a0a0a] border border-gray-800 group-hover:border-[#00ff99] group-active:border-[#00ff99] transition-all duration-300">
                   <Phone className="text-[#00ff99]" size={20} />
                 </div>
                 <div>
                   <p className="text-white font-medium">Phone</p>
                   <p className="text-gray-400 text-sm">+92 329-3026214</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#0a0a0a] border border-gray-800 group-hover:border-[#00ff99] transition-all duration-300">
+              <motion.div 
+                whileTap={{ scale: 0.98 }}
+                className="flex items-start gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#0a0a0a] border border-gray-800 group-hover:border-[#00ff99] group-active:border-[#00ff99] transition-all duration-300">
                   <Mail className="text-[#00ff99]" size={20} />
                 </div>
                 <div>
                   <p className="text-white font-medium">Email</p>
                   <p className="text-gray-400 text-sm">reachmoizakhter@gmail.com</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#0a0a0a] border border-gray-800 group-hover:border-[#00ff99] transition-all duration-300">
+              <motion.div 
+                whileTap={{ scale: 0.98 }}
+                className="flex items-start gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#0a0a0a] border border-gray-800 group-hover:border-[#00ff99] group-active:border-[#00ff99] transition-all duration-300">
                   <MapPin className="text-[#00ff99]" size={20} />
                 </div>
                 <div>
                   <p className="text-white font-medium">Location</p>
                   <p className="text-gray-400 text-sm">Karachi, Pakistan</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <div className="pt-4">
               <p className="text-white font-medium mb-4">Follow Me</p>
               <div className="flex gap-4">
-                <a 
+                <motion.a 
+                  whileTap={{ scale: 0.9 }}
                   href="https://github.com/MuhammadMoiz-stack/" 
-                  className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-800 text-gray-400 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110 transition-all duration-300"
+                  className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-800 text-gray-400 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110 active:border-[#00ff99] active:text-[#00ff99] transition-all duration-300"
                 >
                   <FaGithub size={20} />
-                </a>
-                <a 
+                </motion.a>
+                <motion.a 
+                  whileTap={{ scale: 0.9 }}
                   href="https://www.linkedin.com/in/muhammad-moiz-6744682b8/" 
-                  className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-800 text-gray-400 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110 transition-all duration-300"
+                  className="w-12 h-12 flex items-center justify-center rounded-full border border-gray-800 text-gray-400 hover:border-[#00ff99] hover:text-[#00ff99] hover:shadow-[0_0_15px_rgba(0,255,153,0.3)] hover:scale-110 active:border-[#00ff99] active:text-[#00ff99] transition-all duration-300"
                 >
                   <FaLinkedinIn size={20} />
-                </a>
+                </motion.a>
               </div>
             </div>
+
           </motion.div>
 
           {/* Right Side: Contact Form */}
@@ -150,7 +162,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe"
-                      className="w-full bg-[#050505] border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-[#00ff99] focus:shadow-[0_0_15px_rgba(0,255,153,0.1)] outline-none transition-all duration-300"
+                      className="w-full bg-[#050505] border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-[#00ff99] focus:shadow-[0_0_15px_rgba(0,255,153,0.1)] outline-none transition-all duration-150 touch-manipulation"
                     />
                   </div>
                   <div>
@@ -163,7 +175,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="john@example.com"
-                      className="w-full bg-[#050505] border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-[#00ff99] focus:shadow-[0_0_15px_rgba(0,255,153,0.1)] outline-none transition-all duration-300"
+                      className="w-full bg-[#050505] border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-[#00ff99] focus:shadow-[0_0_15px_rgba(0,255,153,0.1)] outline-none transition-all duration-150 touch-manipulation"
                     />
                   </div>
                   <div>
@@ -176,7 +188,7 @@ const Contact = () => {
                       onChange={handleChange}
                       rows="4"
                       placeholder="Tell me about your project..."
-                      className="w-full bg-[#050505] border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-[#00ff99] focus:shadow-[0_0_15px_rgba(0,255,153,0.1)] outline-none transition-all duration-300 resize-none"
+                      className="w-full bg-[#050505] border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-[#00ff99] focus:shadow-[0_0_15px_rgba(0,255,153,0.1)] outline-none transition-all duration-150 resize-none touch-manipulation"
                     ></textarea>
                   </div>
                   
@@ -184,11 +196,12 @@ const Contact = () => {
                     whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 255, 153, 0.4)" }}
                     whileTap={{ scale: 0.95 }}
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 bg-black border border-[#00ff99] text-white font-semibold px-6 py-4 rounded-full hover:bg-[#00ff99] hover:text-black transition-all duration-300"
+                    className="w-full flex items-center justify-center gap-2 bg-black border border-[#00ff99] text-white font-semibold px-6 py-4 rounded-full hover:bg-[#00ff99] hover:text-black active:bg-[#00ff99] active:text-black transition-all duration-150 touch-manipulation"
                   >
                     <span>Send Message</span>
                     <Send size={18} />
                   </motion.button>
+
                 </motion.form>
               ) : (
                 <motion.div 

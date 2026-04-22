@@ -27,14 +27,15 @@ const SkillCard = ({ skill, index }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.02 }}
-      className="group bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl transition-all duration-300 hover:border-[#00ff99] hover:shadow-[0_0_25px_rgba(0,255,153,0.2)]"
+      whileTap={{ scale: 0.98 }}
+      className="group bg-[#0a0a0a] border border-gray-800 p-6 rounded-2xl transition-all duration-300 hover:border-[#00ff99] hover:shadow-[0_0_25px_rgba(0,255,153,0.2)] active:border-[#00ff99] active:shadow-[0_0_25px_rgba(0,255,153,0.2)] cursor-pointer"
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-4">
-          <div className="text-3xl text-gray-400 group-hover:text-[#00ff99] transition-colors duration-300">
+          <div className="text-3xl text-gray-400 group-hover:text-[#00ff99] group-active:text-[#00ff99] transition-colors duration-300">
             <skill.icon />
           </div>
-          <h3 className="text-white font-semibold tracking-wide group-hover:text-[#00ff99] transition-colors duration-300">
+          <h3 className="text-white font-semibold tracking-wide group-hover:text-[#00ff99] group-active:text-[#00ff99] transition-colors duration-300">
             {skill.name}
           </h3>
         </div>
@@ -42,6 +43,7 @@ const SkillCard = ({ skill, index }) => {
           {skill.level}%
         </span>
       </div>
+
 
       {/* Progress Bar Track */}
       <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">

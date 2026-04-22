@@ -1,14 +1,18 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
+
+// Import project images
+import reactLandingImg from "../assets/react-landing-img.png";
+import weatherAppImg from "../assets/weather-app-img.png";
+import counterAppImg from "../assets/counter-app-img.png";
 
 const projects = [
   {
     title: "React Landing Page",
     description: "Modern responsive landing page with reusable components",
-    image: "/src/assets/react-landing-img.png", // Ensure these paths work or provide placeholders
+    image: reactLandingImg,
     tech: ["React", "Tailwind"],
     live: "https://megapack-react.netlify.app/",
     github: "https://github.com/MuhammadMoiz-stack/React-Landing-page",
@@ -16,7 +20,7 @@ const projects = [
   {
     title: "Weather App",
     description: "Real-time weather app using API integration",
-    image: "/src/assets/weather-app-img.png",
+    image: weatherAppImg,
     tech: ["JavaScript", "API"],
     live: "https://muhammadmoiz-stack.github.io/Weather-App/",
     github: "https://github.com/MuhammadMoiz-stack/Weather-App",
@@ -24,7 +28,7 @@ const projects = [
   {
     title: "Counter App",
     description: "Interactive counter with DOM manipulation",
-    image: "/src/assets/counter-app-img.png",
+    image: counterAppImg,
     tech: ["JavaScript"],
     live: "https://muhammadmoiz-stack.github.io/JavaScript-counter-App/",
     github: "https://github.com/MuhammadMoiz-stack/JavaScript-counter-App",
@@ -51,6 +55,16 @@ const cardVariants = {
 };
 
 const Projects = () => {
+  const [activeCard, setActiveCard] = useState(null);
+
+  const handleCardClick = (index) => {
+    if (activeCard === index) {
+      setActiveCard(null);
+    } else {
+      setActiveCard(index);
+    }
+  };
+
   return (
     <section
       id="projects"
@@ -68,7 +82,7 @@ const Projects = () => {
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white text-3xl md:text-5xl font-bold tracking-tight uppercase"
+            className="text-white text-3xl md:text-5xl font-extrabold tracking-tight uppercase"
           >
             Projects
           </motion.h2>
@@ -106,14 +120,23 @@ const Projects = () => {
                 borderColor: "#00ff99",
                 boxShadow: "0 0 25px rgba(0, 255, 153, 0.3)",
               }}
-              className="group bg-[#0a0a0a] border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300"
+              whileTap={{ scale: 0.95 }}
+              onClick={() => handleCardClick(index)}
+              onTouchStart={() => handleCardClick(index)}
+              className={`group bg-[#0a0a0a] border rounded-2xl overflow-hidden transition-all duration-150 cursor-pointer touch-manipulation active:opacity-80 ${
+                activeCard === index
+                  ? "border-[#00ff99] shadow-[0_0_25px_rgba(0,255,153,0.3)] scale-[1.05]"
+                  : "border-gray-800"
+              }`}
             >
               {/* Image Container */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden touch-manipulation">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${
+                    activeCard === index ? "scale-110" : ""
+                  }`}
                   onError={(e) => {
                     e.target.src =
                       "https://via.placeholder.com/400x200/0a0a0a/00ff99?text=Project+Preview";
@@ -121,17 +144,31 @@ const Projects = () => {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                <div
+                  className={`absolute inset-0 bg-black/70 flex items-center justify-center gap-4 transition-all duration-300 ${
+                    activeCard === index
+                      ? "opacity-100 pointer-events-auto"
+                      : "opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto"
+                  }`}
+                >
                   <a
                     href={project.live}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff99] text-white hover:bg-[#00ff99] hover:text-black transition-all duration-300 text-sm font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff99] text-white hover:bg-[#00ff99] hover:text-black active:bg-[#00ff99] active:text-black transition-all duration-150 text-sm font-medium z-20 touch-manipulation"
                   >
                     <ExternalLink size={16} />
                     Live Demo
                   </a>
                   <a
                     href={project.github}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff99] text-white hover:bg-[#00ff99] hover:text-black transition-all duration-300 text-sm font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#00ff99] text-white hover:bg-[#00ff99] hover:text-black active:bg-[#00ff99] active:text-black transition-all duration-150 text-sm font-medium z-20 touch-manipulation"
                   >
                     <FaGithub size={16} />
                     GitHub
@@ -139,9 +176,14 @@ const Projects = () => {
                 </div>
               </div>
 
+
               {/* Text Content */}
               <div className="p-5">
-                <h3 className="text-white font-semibold text-lg">
+                <h3
+                  className={`font-semibold text-lg transition-colors duration-300 ${
+                    activeCard === index ? "text-[#00ff99]" : "text-white"
+                  } group-hover:text-[#00ff99]`}
+                >
                   {project.title}
                 </h3>
                 <p className="text-gray-400 text-sm mt-2 line-clamp-2">
@@ -168,3 +210,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
